@@ -3,11 +3,11 @@ const onClickEvent = (e,id,children) =>{
     alert('OnClick event fired with id :'+id +' children '+children);
 }
 const GameCircle = (props) => {
-    const {id,children} = props;
+    const {id,children,color} = props;
   return (
     // if we want to pass the event we simply do it like this 
-    <div onClick={(e)=> {onClickEvent(e,id,children)}}> 
-      GameCircle id: {id} {children}
+    <div style={{backgroundColor:color}} onClick={(e)=> {onClickEvent(e,id,children)}}> 
+      {children}
     </div>
   )
 }
