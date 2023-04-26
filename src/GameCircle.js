@@ -1,13 +1,13 @@
 import React from 'react'
-
+const onClickEvent = (e,id,children) =>{
+    alert('OnClick event fired with id :'+id +' children '+children);
+}
 const GameCircle = (props) => {
-    const onClickEvent = () =>{
-        alert('OnClick event fired');
-    }
+    const {id,children} = props;
   return (
-    <div onClick={onClickEvent}>
-      GameCircle id: {props.id} {props.children}
-      
+    // if we want to pass the event we simply do it like this 
+    <div onClick={(e)=> {onClickEvent(e,id,children)}}> 
+      GameCircle id: {id} {children}
     </div>
   )
 }
