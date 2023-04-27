@@ -61,10 +61,14 @@
   border: 2px solid black;
 }
 
-.even{
+.player_2{
   background-color: blue;
 }
-.odd
+.player_1
 {
   background-color: red;
+}
+.player_0
+{
+  background-color: white;
 }

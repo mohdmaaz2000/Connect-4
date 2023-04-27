@@ -1,11 +1,10 @@
 import React from 'react'
 
 const GameCircle = (props) => {
-    const {id,children,circleClicked} = props;
+    const {id,circleClicked,className} = props;
   return (
     // if we want to pass the event we simply do it like this 
-    <div className={`gameCircle ${id % 2 === 0 ? "even" :"odd"}`} onClick={() => {circleClicked(id)}}> 
-      {children}
+    <div className={`gameCircle ${className}`} onClick={() => {circleClicked(id)}}> 
     </div>
   )
 }

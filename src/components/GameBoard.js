@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GameCircle from '../GameCircle'
 
 export default function GameBoard() {   
+    const [board,setBoard] = useState(Array(16).fill(0));
     const circleClicked = (id) =>
     {
         console.log('Cirlce Clicked : '+id);
+        board[id - 1] = 1;
+        setBoard(board);
+        console.log(board);
     }
     return (
         <div className='gameBoard'>
-            <GameCircle id={1} circleClicked={circleClicked}>
+            <GameCircle id={1} className='player_0' circleClicked={circleClicked}>
             </GameCircle>
-            <GameCircle id={2} circleClicked={circleClicked}>
+            <GameCircle id={2} className='player_1' circleClicked={circleClicked}>
             </GameCircle>
-            <GameCircle id={3} circleClicked={circleClicked}>
+            <GameCircle id={3} className='player_2' circleClicked={circleClicked}>
             </GameCircle>
             <GameCircle id={4} circleClicked={circleClicked}>
             </GameCircle>
