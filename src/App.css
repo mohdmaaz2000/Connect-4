@@ -60,3 +60,11 @@
   border-radius: 50%;
   border: 2px solid black;
 }
+
+.even{
+  background-color: blue;
+}
+.odd
+{
+  background-color: red;
+}

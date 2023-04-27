@@ -1,10 +1,14 @@
 import React from 'react'
 import GameCircle from '../GameCircle'
 
-export default function GameBoard() {
+export default function GameBoard() {   
+    const circleClicked = (id) =>
+    {
+        console.log('Cirlce Clicked : '+id);
+    }
     return (
         <div className='gameBoard'>
-            <GameCircle id={1} >
+            <GameCircle id={1} circleClicked={circleClicked}>
             </GameCircle>
             <GameCircle id={2} >
             </GameCircle>
