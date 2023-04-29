@@ -3,19 +3,35 @@ import GameCircle from '../GameCircle'
 import Header from './Header';
 import Footer from './Footer';
 import { helper } from '../helper';
-const PLAYER_0 = 0;
-const NO_CIRCLES = 16;
-const PLAYER_1 = 1;
-const PLAYER_2 = 2;
+
+import {
+    GAME_STATE_PROGRESS,
+    GAME_STATE_WIN,
+    NO_CIRCLES,
+    PLAYER_0,
+    PLAYER_1,
+    PLAYER_2
+} from '../Constants';
+
+
 export default function GameBoard() {
     const [board, setBoard] = useState(Array(NO_CIRCLES).fill(PLAYER_0));
     const [playerState, setPlayerState] = useState(PLAYER_1);
+    const [gameState,setGameState] = useState(GAME_STATE_PROGRESS);
+    const [winPlayer,setWinPlayer] = useState(PLAYER_0);
 
     const circleClicked = (id) => {
-        console.log('Cirlce Clicked : ' + id);
-        if (helper(board, id, playerState)) 
-        { 
-            console.log("Player wins"); 
+        if(gameState === GAME_STATE_WIN)
+        {
+            return;
+        }
+        if(board[id] !== 0)
+        {
+            return;
+        }
+        if (helper(board, id, playerState)) {
+            setGameState(GAME_STATE_WIN);
+            setWinPlayer(playerState);
         }
         setBoard(prev => {
             return prev.map((circle, pos) => {
@@ -24,8 +40,6 @@ export default function GameBoard() {
             });
         });
         setPlayerState(playerState === PLAYER_1 ? PLAYER_2 : PLAYER_1);
-        console.log(board);
-        console.log(playerState);
     }
 
     const renderAllCircle = () => {
@@ -40,7 +54,7 @@ export default function GameBoard() {
     }
     return (
         <>
-            <Header player={playerState} />
+            <Header player={playerState} gameState={gameState} winPlayer={winPlayer}/>
             <div className='gameBoard'>
                 {renderAllCircle()}
 
