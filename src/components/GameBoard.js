@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import GameCircle from '../GameCircle'
 import Header from './Header';
 import Footer from './Footer';
-import { helper } from '../helper';
+import { helper, isDraw } from '../helper';
 
 import {
+    GAME_STATE_DRAW,
     GAME_STATE_PROGRESS,
     GAME_STATE_WIN,
     NO_CIRCLES,
@@ -21,17 +22,30 @@ export default function GameBoard() {
     const [winPlayer,setWinPlayer] = useState(PLAYER_0);
 
     const circleClicked = (id) => {
+
+        // if game is win then do nothing on other clicks
         if(gameState === GAME_STATE_WIN)
         {
             return;
         }
+
+        // do not reClick the same circle
         if(board[id] !== 0)
         {
             return;
         }
+
+        // checks if the game wins 
         if (helper(board, id, playerState)) {
             setGameState(GAME_STATE_WIN);
             setWinPlayer(playerState);
+        }
+
+        // check if the game ends in a draw
+        if(isDraw(board,id,playerState))
+        {
+            setGameState(GAME_STATE_DRAW);
+            setWinPlayer(PLAYER_0);
         }
         setBoard(prev => {
             return prev.map((circle, pos) => {

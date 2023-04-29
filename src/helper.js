@@ -1,3 +1,5 @@
+import { NO_CIRCLES } from "./Constants";
+
 export const helper = (board, id, currentPlayer) => {
     let newBoared = [...board];
     newBoared[id] = currentPlayer;
@@ -22,4 +24,19 @@ export const helper = (board, id, currentPlayer) => {
         }
     }
     return false;
+}
+
+export const isDraw = (board, id, currentPlayer) =>{
+    let newBoared = [...board];
+    newBoared[id] = currentPlayer;
+
+    let count = 0;
+    for(let i = 0; i < NO_CIRCLES ;i++)
+    {
+        if(newBoared[i] === 0)
+        {
+            count = count + 1;
+        }
+    }
+    return count === 0;
 }
