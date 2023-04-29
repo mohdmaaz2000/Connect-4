@@ -26,17 +26,27 @@ export const helper = (board, id, currentPlayer) => {
     return false;
 }
 
-export const isDraw = (board, id, currentPlayer) =>{
+export const isDraw = (board, id, currentPlayer) => {
     let newBoared = [...board];
     newBoared[id] = currentPlayer;
 
     let count = 0;
-    for(let i = 0; i < NO_CIRCLES ;i++)
-    {
-        if(newBoared[i] === 0)
-        {
+    for (let i = 0; i < NO_CIRCLES; i++) {
+        if (newBoared[i] === 0) {
             count = count + 1;
         }
     }
     return count === 0;
+}
+
+export const suggestMove = (board) => {
+    let emptySpace = [];
+
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === 0) {
+            emptySpace.push(i);
+        }
+    }
+    let idx = Math.floor(Math.random() * emptySpace.length);
+    return emptySpace[idx];
 }

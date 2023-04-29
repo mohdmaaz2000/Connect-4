@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GameCircle from '../GameCircle'
 import Header from './Header';
 import Footer from './Footer';
-import { helper, isDraw } from '../helper';
+import { helper, isDraw, suggestMove } from '../helper';
 
 import {
     GAME_STATE_DRAW,
@@ -21,6 +21,23 @@ export default function GameBoard() {
     const [gameState,setGameState] = useState(GAME_STATE_PROGRESS);
     const [winPlayer,setWinPlayer] = useState(PLAYER_0);
 
+    useEffect(() =>{
+        intitGame();
+    },[]);
+
+    const intitGame = () => {
+        setBoard(Array(NO_CIRCLES).fill(PLAYER_0));
+        setPlayerState(PLAYER_1);
+        setGameState(GAME_STATE_PROGRESS);
+        setWinPlayer(PLAYER_0);
+    }
+
+    // suggetsMove function
+    const onClickSuggest = () =>{
+        circleClicked(suggestMove(board));
+    }
+
+    // Function when the circle is clicked
     const circleClicked = (id) => {
 
         // if game is win then do nothing on other clicks
@@ -73,7 +90,7 @@ export default function GameBoard() {
                 {renderAllCircle()}
 
             </div>
-            <Footer />
+            <Footer onClickNewGame={intitGame} onClickSuggest={onClickSuggest}/>
         </>
     )
 }
