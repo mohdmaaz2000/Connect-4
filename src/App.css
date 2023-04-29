@@ -50,7 +50,10 @@
   position: absolute;
   left: 50%;
   margin-left: -250px;
-  top: 20%;
+  top: 10%;
+  background-color: bisque;
+  border-radius: 8%;
+  border: 5px solid burlywood;
 }
 
 .gameCircle {
@@ -61,14 +64,64 @@
   border: 2px solid black;
 }
 
-.player_2{
+.player_2 {
   background-color: blue;
 }
-.player_1
-{
+
+.player_1 {
   background-color: red;
 }
-.player_0
-{
+
+.player_0 {
   background-color: white;
+}
+
+.panel {
+  background-color: lightgoldenrodyellow;
+  border: 5px solid burlywood;
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  left: 50%;
+  top: 2%;
+  margin-bottom: 10px;
+  margin-left: -88px;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  padding: 1px auto;
+}
+
+.footer {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  padding: 1px auto;
+  background-color: lightgoldenrodyellow;
+  border: 5px solid burlywood;
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  left: 50%;
+  top: 86%;
+  margin-bottom: 10px;
+  margin-left: -88px;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.footer button{
+  cursor: pointer;
+  background-color: skyblue;
+  border: 2px solid burlywood;
+  font-size: 19px;
+  font-weight: bold;
+  padding: 5px;
+  margin: auto;
+  margin-top: 6px;
 }
